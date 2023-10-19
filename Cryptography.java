@@ -24,10 +24,10 @@ public class Cryptography{
             if (space >= 0){
                 change = change.substring(space+1);}
             int shift = Integer.parseInt(change);
-            System.out.println(shift);
+            //System.out.println(shift);
             for (int i = 0; i < words.length(); i++){
                 int charUsed = alphabet.indexOf(words.charAt(i));
-                System.out.println(charUsed);
+                //System.out.println(charUsed);
                 charUsed += shift;
                 while (charUsed >= 26){
                     charUsed-=26;
@@ -41,6 +41,7 @@ public class Cryptography{
         }
         else{
             String words = original;
+            words = words.toLowerCase();
             for (int i = 0; i < words.length(); i++){
                 int charUsed = alphabet.indexOf(words.charAt(i));
                 charUsed+= 3;
