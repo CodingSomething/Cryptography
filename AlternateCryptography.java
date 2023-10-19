@@ -5,8 +5,9 @@ public class Cryptography{
     public static String rotation(String input, int shift) {
         final String alphabet = "abcdefghijklmnopqrstuvwxyz";
         String output = "";
+        int i = 0;
         //For each letter in the string, shift the letter by the specified shift amount.
-        for (int i = 0; i < input.length(); i++) {
+        while (i < input.length()) {
             String letter = input.substring(i, i+1);
             int index = alphabet.indexOf(letter);
             //Checks if the character is a letter.
@@ -22,6 +23,7 @@ public class Cryptography{
                 letter = alphabet.substring(index, index+1);
             }
             output += letter;
+            i++;
         }
         return output;
     }
