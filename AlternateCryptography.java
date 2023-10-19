@@ -2,19 +2,22 @@ import java.util.Scanner;
 
 public class Cryptography{
 
-    public static String rotation(String input, int rotation) {
-        String alphabet = "abcdefghijklmnopqrstuvwxyz";
+    public static String rotation(String input, int shift) {
+        final String alphabet = "abcdefghijklmnopqrstuvwxyz";
         String output = "";
+        //For each letter in the string, shift the letter by the specified shift amount.
         for (int i = 0; i < input.length(); i++) {
             String letter = input.substring(i, i+1);
             int index = alphabet.indexOf(letter);
+            //Checks if the character is a letter.
             if (index != -1) {
-                index += rotation;
-                while (index > 25) {
-                    index -= 26;
-                }
-                while (index < 0) {
-                    index += 26;
+                index += shift;
+                while (index > 25 || index < 0) {
+                    if (index > 25) {
+                        index -= 26;
+                    } else if (index < 0) {
+                        index += 26;
+                    }
                 }
                 letter = alphabet.substring(index, index+1);
             }
@@ -24,15 +27,17 @@ public class Cryptography{
     }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        while (true) {
-            System.out.println("Enter a String: ");
-            String inputMessage = sc.nextLine();
-            System.out.println("Enter a number to shift the message: ");
-            String inputNumber = sc.nextLine();
+        String inputMessage = "";
+        String inputNumber = "";
+        while (!inputNumber.equals("0")) {
+            System.out.println("Enter a String:");
+            inputMessage = sc.nextLine();
+            System.out.println("Enter a number to shift the message: (To quit, type '0')");
+            inputNumber = sc.nextLine();
             System.out.println(rotation(inputMessage, Integer.valueOf(inputNumber)));
             System.out.println("");
         }
-        
+        System.out.println("Exited Program");
 
 
     }
